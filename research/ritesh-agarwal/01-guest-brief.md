@@ -1,5 +1,5 @@
 # Guest brief — Ritesh Agarwal
-_Researched 2026-08-03 · Version **V1** · Research score **6/10** (see gaps at the end)_
+_Researched 2026-08-03 · Version **V2** · Research score **8/10** (see gaps at the end)_
 _Angle chosen by host: **founder journey from 17**. Language: Hinglish._
 
 ## Collection summary
@@ -7,24 +7,46 @@ _Angle chosen by host: **founder journey from 17**. Language: Hinglish._
 | Source | Window | Items pulled | Status |
 |---|---|---|---|
 | YouTube appearances (2 search passes) | all-time + 12 mo | 101 unique → **83 genuinely Ritesh/OYO** | ok |
-| Full transcripts analyzed | — | **4** (61,155 words) | ok |
-| Web / news | 6 mo | search only, not yet fetched in depth | partial |
-| X / Twitter | 60 d | **not pulled** | GAP |
-| LinkedIn | 60 d | **not pulled** | GAP |
-| Instagram | 30 d | **not pulled** | GAP |
-| YouTube comments | — | **not pulled** | GAP |
+| Full transcripts analyzed | — | **13** (149,043 words) | ok |
+| Instagram posts | Apr–Jul 2026 | **30** | ok |
+| YouTube comments (2 biggest videos) | — | **120** | ok, low yield |
+| Web / news | 6 mo | search-grade only | partial |
+| X / Twitter | 60 d | **0 usable** after 3 attempts, 2 actors | **FAILED — see below** |
+| LinkedIn | 60 d | **0 items** | **FAILED — see below** |
 
-**Cost so far: $0.40** (YouTube search $0.116 + $0.284; all four transcripts $0.00 —
-`pintostudio/youtube-transcript-scraper` is free).
+**Cost: $0.64.** YouTube search $0.116 + $0.284 · comments $0.160 · Instagram $0.076 ·
+X attempts $0.004 · LinkedIn $0.0001 · **all 13 transcripts $0.00**
+(`pintostudio/youtube-transcript-scraper` is free — transcripts are pure upside).
+
+### Failed sources — declared, not hidden
+
+**X/Twitter (@riteshagar, 322k followers): three attempts, zero usable posts.**
+`apidojo/tweet-scraper` returned 10 `noResults` markers with both `twitterHandles` and
+`from:` search input; `kaitoeasyapi/...cheapest` returned 15 items that were the actor's
+own billing notices, not tweets. Both appear to gate real results behind a paid Apify
+plan. On the free tier, treat X as unavailable for this workflow.
+
+**LinkedIn: `harvestapi/linkedin-profile-posts` returned 0 items** for the profile URL.
+Same likely cause. The web-search fallback was not run for either — that is the one
+remaining cheap improvement.
 
 Transcripts analyzed:
 
-| Appearance | Date | Length | Language |
-|---|---|---|---|
-| Think School | 2024-05-30 | 1:54:49 | English |
-| MyGov India | 2025-03-08 | 1:46:17 | Hindi |
-| Raj Shamani | 2022-04-15 | 1:27:43 | English |
-| Sandeep Maheshwari (Ep. 62) | 2022-11-23 | 0:20:03 | Hindi |
+| Appearance | Date | Length | Language | Words |
+|---|---|---|---|---|
+| Travel Forum '25 (own channel) | 2025-08-03 | 3:05:45 | English | 34,269 |
+| Think School | 2024-05-30 | 1:54:49 | English | 21,413 |
+| MyGov India | 2025-03-08 | 1:46:17 | Hindi | 18,770 |
+| Raj Shamani | 2022-04-15 | 1:27:43 | English | 17,010 |
+| Him-eesh Madaan (full) | 2024-02-01 | 1:19:40 | Hinglish | 14,710 |
+| BeerBiceps | 2020-05-08 | 0:55:31 | English | 9,758 |
+| Dainik Jagran | 2023-10-06 | 0:45:31 | Hindi | 8,571 |
+| Altus / Oracle ERP | 2026-01-04 | 0:38:06 | English | 6,957 |
+| ABP Live | 2022-03-26 | 0:32:35 | Hindi | 5,289 |
+| CNBC-TV18 | 2018-11-04 | 0:23:27 | English | 4,275 |
+| Pinkvilla Biz | 2026-03-04 | 0:17:09 | English | 4,059 |
+| Sandeep Maheshwari (Ep. 62) | 2022-11-23 | 0:20:03 | Hindi | 3,962 |
+| India Today (2018) | 2018-10-13 | 0:21:10 | — | **0 — empty transcript** |
 
 ---
 
@@ -64,7 +86,7 @@ appearances): if you can't convince your parents, you can't convince investors.
 
 ## 3. Kill list — do not ask
 
-Counted directly from the four transcripts. These are saturated beyond rescue:
+Counted across the transcript corpus. These are saturated beyond rescue:
 
 | Question / beat | Mentions | Where |
 |---|---|---|
@@ -82,9 +104,16 @@ isolated and repeated: Nikhil Kamath Clips — *"How Thiel Fellowship Changed My
 (2024-03-12, 267k views); Ritesh's own channel — *"From Odisha to OYO: my untold story"*
 (2024-01-27, 519k).
 
-⚠️ **Host-specific:** if this is for Raj Shamani's show, note that
-*"College Dropout To Building A SUCCESSFUL Unicorn"* (2022-04-15, 610k views, 1:27:43)
-already exists on that channel and covers this exact angle end to end.
+**He has named his own kill-list question**, which is as direct as this evidence gets:
+> "I have been asked a version of the same question for the past two years. **Is economy
+> hospitality still a good bet?** My answer has not changed."
+> — Instagram, 2026-04-29 [V]
+
+⚠️ **Competitive note for a new channel.** This is a launch-phase booking, so the
+episode has to look different from what already ranks, not merely be different. The
+founder-journey version is already owned by Sandeep Maheshwari (3.77M views),
+Raj Shamani (610k), Him-eesh Madaan (343k full podcast) and Ritesh's own channel.
+A new channel that reruns those beats invites the comparison and loses it.
 
 ## 4. Unfinished threads ⭐
 
@@ -96,8 +125,13 @@ The highest-value section. Each is something he raised and deliberately did not 
 | 2 | **Capital as outcome** | "capital is more an outcome rather than the input" | Think School [1:49:33] | stated as a conclusion, never argued |
 | 3 | **No repeatable process** | "every entrepreneur will find their way… there is no singular set in stone process" | Think School [44:52] | deflection when pressed for method |
 | 4 | **Cross-border owner network** | "people in Gujarat introduce us to owners in the US" | Think School [1:49:33] | aside, never unpacked |
-| 5 | **11 years dating before marriage** | "my then girlfriend and now wife who I've dated for probably 11 years before we married" | Think School [63:40] | passing mention — *check no-go list first* |
-| 6 | **The questions nobody asks** | "no one has ever asked me such questions… they have asked the questions in the form, so I must answer" (on the Thiel application) | Raj Shamani [37:14] | names the phenomenon, gives no examples |
+| 5 | **The questions nobody asks** | "no one has ever asked me such questions… they have asked the questions in the form, so I must answer" (on the Thiel application) | Raj Shamani [37:14] | names the phenomenon, gives no examples |
+| 6 | **"What not to do"** ⭐ | "When I started out, I had no one to tell me what not to do. I just had to figure it out the hard way. And I did, but it cost me time, money, and a lot of stress that I could have avoided." | Instagram, 2026-05-13 | posted as a hook, never itemised |
+| 7 | **The unglamorous first $1M** | "Your first $1M in sales usually does not begin with some grand masterplan. It starts with doing the unglamorous work…" | Instagram, 2026-04-13 | caption-length only |
+| 8 | **"How clearly I can see the road ahead"** | "My answer has not changed. But what has changed is how clearly I can see the road ahead." | Instagram, 2026-04-29 | says the *view* changed, never says to what |
+
+_Thread on his marriage/relationship: **dropped at the host's instruction** — episode
+stays professional._
 
 ## 5. Evolution and contradictions
 
@@ -114,18 +148,36 @@ Indian startup history, went through a severe contraction, and now argues capita
 That is remarkable given his history — and it is the clearest single sign of where the
 unasked territory is.
 
-## 6. Recent delta (2025–26)
+## 6. Recent delta (Apr–Jul 2026) ⭐
 
-Verified from the appearance dataset and search; **not yet deep-researched** — the weakest
-section of V1.
+Now source-grade, from 30 Instagram posts. **No existing interview covers any of this.**
 
-- **PRISM IPO** — parent company targeting ~₹6,650 crore raise, $7–8B valuation, 2026 listing [P]
-- **FY26 guidance** — ~₹1,100 cr PAT, ~₹2,000 cr EBITDA, helped by Motel 6 [P]
-- **Shark Tank India S5** — premiered 2026-01-05, continues as judge [P]
-- **Travel Forum '25** — 3h05m on his own channel with travel creators, 2025-08-03, 1.19M views [V]
-- **Own-channel format shift** — now publishes short pieces spotlighting *other* young
-  founders (a 13-year-old running an AI healthcare venture, 2026-01-20) [V]
-- **Altus / Oracle ERP conversation** — 2025-12 to 2026-01, an unusually operational appearance [V]
+**"OYO-Serviced Hotels" — the product bet of 2026** [V]
+> "Humare kehne par mat jao. Khud test kro. 🔑 OYO-Serviced Hotels mein: trained staff,
+> photo-verified rooms, makhan Wi-Fi, smooth check-in. Sab as expected. No surprises."
+> — 2026-05-03, 64,842 likes
+> "Staff OYO ka. Guarantee bhi OYO ki. Koi problem?! 30 minutes mein fix. Nahi hua?
+> Full refund. No questions asked." — 2026-05-10
+
+**Cross-source finding:** of 120 YouTube comments sampled on his two biggest appearances,
+**16 are customer complaints** about refunds, service quality and trust. He has now
+launched a product whose entire pitch is a 30-minute fix or a full refund. The complaint
+pattern and the product launch are the same story from two ends — and nobody has asked
+him to connect them on camera.
+
+**Studio 6 Plus** — new extended-stay brand launched at the G6 Franchise Conference,
+Cancún, 2026-06-01 [V]. The US business is now producing its own brands, not just
+operating acquired ones.
+
+**Other recent signals** [V]
+- Global circuit: Cancún (Apr–Jun), Nice / Bharat Innovates 2026 (2026-06-16)
+- Public commentary on Indian space/deep tech, referencing SpaceX (2026-07-27)
+- Political post on the PM's tenure (2026-06-12, 20.5k likes, 611 comments) — see landmines
+- Own channel now spotlights *other* young founders, e.g. a 13-year-old AI healthcare
+  founder (2026-01-20)
+
+**Still search-grade only** [P]: PRISM IPO (~₹6,650 cr, $7–8B target, 2026 listing),
+FY26 guidance (~₹1,100 cr PAT, ~₹2,000 cr EBITDA), Shark Tank India S5.
 
 ## 7. Landmines
 
@@ -134,31 +186,38 @@ section of V1.
 | PRISM IPO specifics | live IPO process — expect legal limits on forward-looking statements; don't build a segment on numbers he cannot give |
 | 2019–2022 layoffs and contraction | fair to discuss, but frame around decisions and learning, not blame |
 | Wife / 11-year relationship | he raised it himself, but it is personal — confirm against the show's no-go list |
-| Hotel-owner disputes, past litigation | not researched in V1; **do not raise until verified** |
+| Hotel-owner disputes, past litigation | still not researched; **do not raise until verified** |
+| Customer service complaints | 16 of 120 sampled comments are refund/fraud/quality complaints. Expect the episode's own comment section to fill with these. Better to address it head-on via the OYO-Serviced Hotels guarantee than to leave it unspoken |
+| Political content | he posts supportively about the PM (2026-06-12). For a new channel choosing its positioning, decide in advance whether politics enters the episode at all |
 | Net-worth figures | widely reported and mutually inconsistent; treat all as [P], never state as fact |
 
 ---
 
-## Honest self-assessment (V1)
+## Honest self-assessment (V2)
 
-**Research score: 6/10.** Capped at 6 by the rubric's thin-pull rule — four planned
-sources returned nothing, because they were never attempted.
+**Research score: 8/10.** Up from 6/10 in V1.
 
-What worked: the YouTube layer is genuinely strong (83 real appearances, four full
-transcripts, 61k words), and the kill list is quantified rather than guessed.
+What moved it: 13 full transcripts instead of 4 (149k words), 30 Instagram posts giving a
+genuinely source-grade recent delta, comment sampling that produced one real cross-source
+insight, and every failed source explicitly declared rather than quietly omitted.
 
-What is missing, specifically:
+What is still missing:
 
-1. **X/Twitter, LinkedIn, Instagram: zero data.** All three actors exist and are funded;
-   they simply have not been run.
-2. **Comments not pulled** — the two biggest videos carry 6,506 and 5,259 comments, which
-   is the audience-demand signal for this exact guest.
-3. **Recent delta is search-grade, not source-grade** — 2026 items are [P], not [V].
-4. **No independent topic research yet** (Stage 2B not started).
-5. **Only 4 of 83 appearances transcribed** — and transcripts are free, so this is pure
-   upside. The Nikhil Kamath appearance is named by Ritesh himself as containing the visa
-   story he skipped elsewhere.
+1. **X/Twitter and LinkedIn remain at zero** after three and one attempts respectively.
+   The web-search fallback (`site:linkedin.com/posts`, `site:x.com`) has not been run —
+   the cheapest remaining improvement.
+2. **Stage 2B topic research not started** — no independent view of the economy-hospitality
+   market, so the content-supply gap is currently assumed rather than evidenced.
+3. **The Nikhil Kamath full appearance is still not transcribed**, and Ritesh names it
+   himself as where the visa story lives. Only the clips channel surfaced in search.
+4. **70 of 83 appearances still untranscribed** — free, so still pure upside.
+5. **Recent delta covers Apr–Jul 2026 only** because that is what 30 posts reached; the
+   Jan–Mar 2026 window is thinner.
 
-**To reach 8/10:** run the three social actors, pull top-50 comments on the two biggest
-videos, and transcribe 4–6 more appearances including Nikhil Kamath's. Estimated extra
-cost: **$0.30–0.50** (transcripts free; comments and social are the spend).
+**To reach 9/10:** run the two web-search fallbacks, find and transcribe the Nikhil Kamath
+episode, and complete Stage 2B. Estimated additional cost: **under $0.10** — the remaining
+work is mostly free.
+
+**Budget note:** $0.64 spent of the $5/month free-tier allowance. The expensive items were
+YouTube search ($0.40 of the total) and comments ($0.16); the comments were the weakest
+return per rupee and should be dropped for the next guest unless the host disagrees.

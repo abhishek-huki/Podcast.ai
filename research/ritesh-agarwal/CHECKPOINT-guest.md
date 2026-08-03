@@ -37,3 +37,32 @@ videos, transcribe 4-6 more appearances (free) including Nikhil Kamath's.
 - Host identity confirmation (is this Raj Shamani's show?) — changes the kill list.
 - No-go decision on the personal/relationship thread.
 - Stage 2B topic research not started.
+
+---
+
+# CHECKPOINT — V2 — 2026-08-03
+
+## What changed
+- Transcripts 4 → 13 (61k → 149k words). All free.
+- Instagram: 30 posts, Apr–Jul 2026. Best source in the whole run for recent delta.
+- Comments: 120 sampled. Low yield, but produced one cross-source insight.
+- X/Twitter and LinkedIn: failed. Declared, not hidden.
+- Host confirmed: this is a NEW channel, so no own-show kill list, but the
+  differentiation bar is higher. Personal/relationship thread dropped on instruction.
+
+## Cost ledger
+YouTube search $0.400 · comments $0.160 · Instagram $0.076 · X $0.004 · LinkedIn $0.0001
+· transcripts $0.000 → **total $0.64** of the $5/month free tier.
+
+## Lessons for the skill
+- On Apify's free tier X/Twitter is effectively unavailable: two actors returned
+  `noResults` markers and billing notices instead of posts. Plan around it.
+- Instagram captions beat every other social source for recent delta on this guest.
+- Comments were the worst return per rupee; make them opt-in, not default.
+- Cross-referencing comment complaints against Instagram product launches produced the
+  single best question in the brief. Worth making that cross-source pass explicit.
+
+## Score
+Research **8/10** · Questions n/a · Integrity n/a
+To reach 9: web-search fallbacks for X/LinkedIn, transcribe the Nikhil Kamath episode,
+run Stage 2B. Cost under $0.10.
