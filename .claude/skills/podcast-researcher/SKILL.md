@@ -203,10 +203,19 @@ that does becomes an experienced researcher.
 
 ## Tools
 
-- **Apify** for social platforms — connector if configured, otherwise
+- **Apify** for social platforms — MCP connector if configured, otherwise
   `scripts/apify_run.py` with an `APIFY_TOKEN`. See `references/apify-playbook.md`.
 - **Web search / fetch** for the open web, news, and indexed discussion.
 - `scripts/new_guest.py <guest name>` scaffolds the output folder and copies templates.
+
+Check tool access *before* promising a deep run, because the failure is silent
+otherwise: in a sandboxed environment (Claude Code cloud sessions default to
+**Trusted** network access), `WebSearch` works but `WebFetch` and direct calls to
+`api.apify.com` return 403. An Apify MCP connector still works there, since connector
+traffic does not use the session's network — and an Apify web-crawler actor can then
+fetch pages that `WebFetch` cannot reach. If neither route is available, say so up
+front and scope the run to what search snippets alone can support, rather than
+producing a brief that looks complete but rests on almost no data.
 
 Scraping is rate-limited and costs money: pull public data only, respect the
 per-guest budget agreed in Stage 0, and report actual spend in each checkpoint.

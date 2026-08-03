@@ -11,7 +11,7 @@ output before it goes into a recording.
 ## What's here
 
 ```
-skills/podcast-researcher/
+.claude/skills/podcast-researcher/
 ├── SKILL.md                  the workflow: intake → research → synthesis → questions
 ├── references/               the deep guidance, loaded only when a stage needs it
 │   ├── guest-research.md     sources, extraction targets, the seven artifacts
@@ -29,34 +29,62 @@ skills/podcast-researcher/
 
 ## Install the skill
 
-Copy (or symlink) the skill folder into a skills directory Claude reads:
+The skill lives at `.claude/skills/podcast-researcher/`, so it loads automatically
+in any session working in this repo — including Claude Code cloud sessions, which
+clone the repo and pick up `.claude/skills/` on their own.
+
+To make it available in every project on your own machine as well:
 
 ```bash
-# available in every project
-cp -r skills/podcast-researcher ~/.claude/skills/
-
-# or scoped to one project
-mkdir -p .claude/skills && cp -r skills/podcast-researcher .claude/skills/
+cp -r .claude/skills/podcast-researcher ~/.claude/skills/
 ```
 
 Then just ask: *"research Vaibhav Sisinty for my podcast on AI agents"*.
 
-## Set up scraping (optional but this is where the depth comes from)
+## Set up scraping (this is where the depth comes from)
 
 Plain web search cannot read Instagram, X, LinkedIn, or YouTube comments. Apify can.
+Create an account at [apify.com](https://apify.com), then pick one of two routes.
 
-1. Create an account at [apify.com](https://apify.com), open the Console.
-2. Settings → API & Integrations → copy your API token.
-3. Either add the **Apify connector** in Claude's settings and paste the token, or
-   export it for the bundled script:
+**Route A — Apify MCP connector (works in cloud sessions, phone included).**
+Add Apify as a connector in your Claude settings and authenticate it there. Connector
+traffic goes through Anthropic's servers rather than the session's own network, so it
+works regardless of the environment's network access level, and the token never sits
+in an environment variable. This is the route to prefer for Claude Code on the web.
+
+**Route B — the bundled script.** Needs outbound access to `api.apify.com` and a
+token in the environment:
 
 ```bash
 export APIFY_TOKEN=apify_api_xxx
-python skills/podcast-researcher/scripts/apify_run.py search "youtube transcript"
+python .claude/skills/podcast-researcher/scripts/apify_run.py search "youtube transcript"
 ```
 
 A deep run costs roughly $1–2 per guest. A run that comes in at $0.30 is usually
 too shallow rather than efficient.
+
+## Running this in a Claude Code cloud session
+
+Cloud environments default to **Trusted** network access, which allows package
+registries and GitHub and nothing else. That default breaks both halves of this
+workflow, and the failures look unrelated to each other:
+
+| Capability | Under Trusted access | Fix |
+|---|---|---|
+| `WebSearch` | works — it runs on Anthropic's servers | nothing to do |
+| `WebFetch` of an article or transcript | HTTP 403 | Custom access, or fetch via an Apify crawler over MCP |
+| `api.apify.com` from the script | 403 at the gateway | Custom access, or Route A above |
+| MCP connector traffic | works | nothing to do |
+
+To use the script and open-web fetching, open the environment selector at
+[claude.ai/code](https://claude.ai/code) (the cloud icon above the message box),
+edit the environment, set **Network access** to **Custom**, and add the hosts you
+need — `api.apify.com` plus whatever the research must read — keeping *"also include
+default list of common package managers"* checked.
+
+Note that environment variables in a cloud environment are not a secrets store:
+anyone who can use that environment can read them. Prefer the connector route for
+the Apify token, and scope any token you do paste.
 
 ## How the workflow runs
 
