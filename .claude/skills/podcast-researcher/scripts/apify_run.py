@@ -169,9 +169,14 @@ def save_dataset(run, out, limit):
 
     if cost is not None:
         print(f"cost: ${cost:.4f} — record this in the stage checkpoint", file=sys.stderr)
-    if len(items) < 10:
-        print("WARNING: thin pull (<10 items). Treat as a failed source: retry with "
-              "different input, try another actor, or declare the gap.", file=sys.stderr)
+    # Judge thinness by payload, not item count: transcript actors legitimately return
+    # one item holding the whole video, and warning on those trains you to ignore the
+    # warning that matters — a social pull that genuinely came back with four posts.
+    payload = len(json.dumps(items))
+    if len(items) < 10 and payload < 20000:
+        print(f"WARNING: thin pull ({len(items)} items, {payload} bytes). Treat as a "
+              "failed source: retry with different input, try another actor, or declare "
+              "the gap.", file=sys.stderr)
 
 
 def main():

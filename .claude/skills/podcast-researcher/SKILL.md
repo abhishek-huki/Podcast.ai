@@ -64,7 +64,7 @@ Collect from the user (ask only for what's missing; sensible defaults are fine):
 | Language / delivery style | match the user's own language, including Hinglish |
 | Host's previous episodes on this topic | ask — needed for the kill list |
 | No-go areas | ask — personal life, legal matters, sponsor conflicts |
-| Budget for scraping | ~$1–2 per guest |
+| Budget for scraping | roughly 1–2 USD per guest |
 
 Then **state back what you understood before doing any work**: what kind of episode
 this is, what the output must contain, and what would make it fail. Get a yes.
