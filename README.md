@@ -46,11 +46,13 @@ Then just ask: *"research Vaibhav Sisinty for my podcast on AI agents"*.
 Plain web search cannot read Instagram, X, LinkedIn, or YouTube comments. Apify can.
 Create an account at [apify.com](https://apify.com), then pick one of two routes.
 
-**Route A — Apify MCP connector (works in cloud sessions, phone included).**
-Add Apify as a connector in your Claude settings and authenticate it there. Connector
-traffic goes through Anthropic's servers rather than the session's own network, so it
-works regardless of the environment's network access level, and the token never sits
-in an environment variable. This is the route to prefer for Claude Code on the web.
+**Route A — Apify MCP.** Note that Apify ships two different things, and the one in
+Claude's connector directory is the *desktop extension*, which runs locally and is
+unavailable in cloud sessions. The one that works remotely is Apify's hosted MCP
+server at `https://mcp.apify.com`, added through **Settings → Connectors → Add custom
+connector**. Connector traffic goes through Anthropic's servers rather than the
+session's own network, so it works regardless of the environment's network access
+level and keeps the token out of environment variables.
 
 **Route B — the bundled script.** Needs outbound access to `api.apify.com` and a
 token in the environment:
@@ -78,9 +80,15 @@ workflow, and the failures look unrelated to each other:
 
 To use the script and open-web fetching, open the environment selector at
 [claude.ai/code](https://claude.ai/code) (the cloud icon above the message box),
-edit the environment, set **Network access** to **Custom**, and add the hosts you
-need — `api.apify.com` plus whatever the research must read — keeping *"also include
-default list of common package managers"* checked.
+edit the environment, and change **Network access**.
+
+**Full** is the practical choice for this workflow. Research means reading sites you
+cannot name in advance, so a Custom allowlist gets edited on every run and still
+blocks the article you actually needed. Full opens every domain to the session, which
+is a real widening of what a session can reach — worth choosing deliberately, and
+reasonable here given the repo holds no secrets and the work is reading public pages.
+Use **Custom** with `api.apify.com` if you would rather scrape through Apify only and
+leave open-web fetching off.
 
 Note that environment variables in a cloud environment are not a secrets store:
 anyone who can use that environment can read them. Prefer the connector route for
