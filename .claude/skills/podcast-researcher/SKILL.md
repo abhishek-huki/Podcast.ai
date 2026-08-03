@@ -178,6 +178,11 @@ Write all of these to `research/<guest-slug>/`:
 
 Templates for the briefs, runsheet, and checkpoints live in `assets/`.
 
+Then render the ones a human actually reads — the brief, the questions, the runsheet —
+with `scripts/brief_to_pdf.py <file.md>`. Markdown is the working format, but a host
+preparing on a phone half an hour before a recording opens a PDF, not a repo. Use
+`--landscape` for the runsheet if its tables are wide.
+
 ## Stage 7 — Score and iterate
 
 Score the final package against `references/quality-rubric.md`, state the score
