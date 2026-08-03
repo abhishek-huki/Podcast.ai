@@ -104,6 +104,10 @@ Adjust to whatever the actor's own input schema says — schemas differ and chan
 ## Cost control
 
 - Agree a per-guest budget in Stage 0; ~$1–2 buys a deep run at 2026 pricing.
+- Check the plan before planning the run: `GET /v2/users/me` returns the plan and its
+  monthly credits, and costs nothing. Apify's free tier is $5/month, which is roughly
+  three deep guests — on that tier, spend the budget on transcripts and X/Twitter
+  first, and treat comment scraping as the thing to cut.
 - A shallow demo-grade run lands near $0.30. If the total comes in far under budget,
   that is usually evidence the research is too thin, not that it was efficient.
 - Cap every run with `resultsLimit` / `maxItems`. Uncapped social scrapers can run
