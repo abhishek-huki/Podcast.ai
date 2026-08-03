@@ -55,19 +55,22 @@ before pulling the full window.
 
 ## Known-good starting points
 
-Verify each before use; treat as a search seed, not gospel.
+These IDs were confirmed to exist in the store on 2026-08-03. Existing is not the
+same as working for your case, so still run one small test before the full pull.
 
 | Need | Actor to try first | Notes |
 |---|---|---|
 | Instagram posts | `apify/instagram-scraper` | `directUrls` + `resultsLimit`; use `resultsType: "posts"` |
 | Instagram single-profile posts | `apify/instagram-post-scraper` | lighter/cheaper for post-only pulls |
+| Instagram comments | `apify/instagram-comment-scraper` | if audience signal on IG matters |
 | X / Twitter posts | `apidojo/tweet-scraper` | the most fragile platform; expect retries |
 | YouTube search + video metadata | `streamers/youtube-scraper` | good for finding appearances |
-| YouTube transcripts | search store for "youtube transcript" | several competing actors; test cheap first |
-| YouTube comments | search store for "youtube comments" | pull top ~50 sorted by relevance |
+| YouTube transcripts | `pintostudio/youtube-transcript-scraper` | many competitors exist; test cheap first |
+| YouTube comments | `streamers/youtube-comments-scraper` | or `apidojo/youtube-comments-scraper` |
+| LinkedIn profile posts | `harvestapi/linkedin-profile-posts` | see the LinkedIn note below |
+| LinkedIn post search | `harvestapi/linkedin-post-search` | finds posts mentioning the guest |
 | Any website / newsletter | `apify/website-content-crawler` | clean markdown from arbitrary sites |
 | Google results at scale | `apify/google-search-scraper` | when built-in web search isn't enough |
-| LinkedIn posts | search store; expect failure | least reliable — see fallback below |
 
 ## Typical inputs
 
@@ -121,8 +124,11 @@ Failure is normal on social platforms. Escalate in this order:
 4. **Declare the gap.** Write it in the checkpoint and in the quality self-score.
    A named gap is recoverable; a silent one poisons the brief.
 
-LinkedIn specifically: assume the direct scrape will not work and plan for the
-web-search fallback from the start.
+LinkedIn specifically: a maintained family of actors does exist (`harvestapi/*`
+covers profile posts, post search, comments, and reactions), so LinkedIn is worth a
+real attempt rather than being written off. It is still the platform most likely to
+return thin or empty results, so test with a small pull, and keep the
+`site:linkedin.com/posts <name>` web-search fallback ready.
 
 ## Data hygiene
 
