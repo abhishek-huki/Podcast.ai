@@ -1,0 +1,8 @@
+# Per-guest research output: contains scraped data and unverified drafts.
+# Commit a specific guest folder deliberately if you want it in the repo.
+research/
+
+__pycache__/
+*.pyc
+.env
+.DS_Store
