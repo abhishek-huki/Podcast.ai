@@ -57,7 +57,10 @@ def request(method, path, params=None, body=None, timeout=120):
         detail = exc.read().decode()[:500]
         sys.exit(f"Apify {method} {path} failed: HTTP {exc.code}\n{detail}")
     except urllib.error.URLError as exc:
-        sys.exit(f"Could not reach Apify: {exc.reason}")
+        sys.exit(f"Could not reach api.apify.com: {exc.reason}\n"
+                 "If you are inside a sandbox or corporate proxy, outbound access to "
+                 "api.apify.com may be blocked by network policy — check that first, "
+                 "before assuming the token is wrong.")
     return json.loads(payload) if payload else {}
 
 
@@ -77,7 +80,8 @@ def load_input(raw):
 
 def cmd_search(args):
     result = request("GET", "/store", {"search": args.query, "limit": args.limit})
-    items = result.get("data", {}).get("items", [])
+    data = result.get("data", result)
+    items = data.get("items", data) if isinstance(data, dict) else data
     if not items:
         print("No actors matched. Try broader terms.")
         return
